@@ -51,6 +51,8 @@ function connect() {
 
   isConnected = true;
 }
+// Auto-connect on import for simple local development
+connect();
 
 /**
  * Disconnect cleanly closes the database connection.
