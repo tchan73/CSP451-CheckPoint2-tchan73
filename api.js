@@ -1,21 +1,15 @@
-// api.js
 const express = require("express");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-let users = [];
+const healthRoutes = require("./src/routes/health");
+const userRoutes = require("./src/routes/users");
 
-app.get("/users", (req, res) => {
-    res.json(users);
+app.use("/api", healthRoutes);
+app.use("/api", userRoutes);
+
+app.listen(PORT, () => {
+  console.log(`API server running at http://localhost:${PORT}`);
 });
-
-app.post("/users", (req, res) => {
-    const { name, email } = req.body;
-    if (!name || !email) return res.status(400).json({ error: "Name and email are required" });
-    users.push({ name, email });
-    res.status(201).json({ message: "User added successfully" });
-});
-
-app.listen(port, () => console.log(`API server running at http://localhost:${port}`));
