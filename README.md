@@ -1,5 +1,6 @@
 ## Conflict Test
 This line is from USER AUTH branch.
+This line is from API branch.
 
 # CSP451 Web Starter — Week 2 Checkpoint 2
 

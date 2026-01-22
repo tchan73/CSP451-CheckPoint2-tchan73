@@ -1,26 +1,13 @@
-\# User Authentication UI
+# User Authentication Feature
 
+## Overview
+This branch improves the login form behavior and overall user experience.
 
+## Changes
+- Added client-side validation for username and password
+- Displayed inline error messages
+- Disabled submit button until inputs are valid
 
-\## Overview
-
-This branch improves the login form behavior and user feedback.
-
-
-
-\## Changes
-
-\- Added input validation
-
-\- Inline error messages
-
-\- Disabled submit until inputs are valid
-
-
-
-\## Why this exists
-
-Prevents invalid form submissions and improves user experience.
-
-
-
+## Reasoning
+These changes reduce invalid submissions and improve usability
+before authentication requests are sent to the server.
