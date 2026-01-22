@@ -20,3 +20,50 @@ loginForm.addEventListener("submit", (e) => {
 
     alert("Login successful (demo)");
 });
+// Inline error message elements
+const errorContainer = document.createElement("div");
+errorContainer.style.color = "red";
+errorContainer.style.marginTop = "10px";
+errorContainer.style.fontSize = "0.9rem";
+
+// Attach error container below the form
+form.appendChild(errorContainer);
+
+// Disable submit button by default
+submitBtn.disabled = true;
+
+/**
+ * Validates login inputs and updates UI feedback.
+ * This exists to prevent unnecessary form submissions
+ * and to improve user experience before sending data.
+ */
+function validateInputs() {
+  errorContainer.textContent = "";
+
+  if (username.value.trim() === "") {
+    errorContainer.textContent = "Username is required.";
+    submitBtn.disabled = true;
+    return false;
+  }
+
+  if (password.value.length < 6) {
+    errorContainer.textContent =
+      "Password must be at least 6 characters long.";
+    submitBtn.disabled = true;
+    return false;
+  }
+
+  submitBtn.disabled = false;
+  return true;
+}
+
+// Validate on every input change
+username.addEventListener("input", validateInputs);
+password.addEventListener("input", validateInputs);
+
+// Final validation on submit
+form.addEventListener("submit", function (e) {
+  if (!validateInputs()) {
+    e.preventDefault();
+  }
+});
